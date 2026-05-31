@@ -1,0 +1,8 @@
+*.backup
+*.bak
+*~
+secrets/
+local.nix
+result
+result-*
+.direnv/
