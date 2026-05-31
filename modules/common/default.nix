@@ -40,6 +40,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  environment.systemPackages = with pkgs; [
+    age  # age-keygen + age encrypt/decrypt; used to manage sops-nix age keys
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
