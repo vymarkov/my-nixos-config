@@ -3,12 +3,26 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-  };
 
-  outputs = { nixpkgs, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [ ./configuration.nix ];
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
+    let
+      lib = import ./lib { inherit inputs; };
+    in
+    {
+      nixosConfigurations = {
+        nixos = lib.mkHost "nixos";
+        # vps = lib.mkHost "vps"; # enable after nixos-generate-config on the VPS
+      };
+    };
 }

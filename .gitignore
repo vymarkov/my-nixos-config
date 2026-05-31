@@ -1,8 +1,9 @@
 *.backup
 *.bak
 *~
-secrets/
+secrets/age-keys.txt
 local.nix
 result
 result-*
 .direnv/
+**/*.dec
