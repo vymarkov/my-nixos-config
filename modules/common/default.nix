@@ -41,6 +41,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    bash
     age  # age-keygen + age encrypt/decrypt; used to manage sops-nix age keys
   ];
 
