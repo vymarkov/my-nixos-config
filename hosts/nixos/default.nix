@@ -5,6 +5,7 @@
     ../../modules/common
     ../../modules/roles/desktop.nix
     ../../modules/roles/media.nix
+    ../../modules/roles/storage.nix
     ./hardware-configuration.nix
   ];
 
