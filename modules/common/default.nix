@@ -43,6 +43,8 @@
   environment.systemPackages = with pkgs; [
     bash
     age  # age-keygen + age encrypt/decrypt; used to manage sops-nix age keys
+    sops  # sops encrypt/decrypt; used to manage sops-nix secrets
+    openssl  # openssl encrypt/decrypt; used to manage sops-nix secrets
   ];
 
   nixpkgs.config.allowUnfree = true;
