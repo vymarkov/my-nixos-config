@@ -7,3 +7,4 @@ result
 result-*
 .direnv/
 **/*.dec
+compose/sairo/.env

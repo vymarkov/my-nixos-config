@@ -129,7 +129,10 @@ curl -I http://127.0.0.1:9000/minio/health/live
 | File | Purpose |
 |------|---------|
 | [`modules/services/minio.nix`](../modules/services/minio.nix) | MinIO service, firewall, sops credentials |
+| [`compose/sairo/docker-compose.yml`](../compose/sairo/docker-compose.yml) | Sairo web UI for browsing buckets (`:8000`) |
+| [`modules/services/sairo.nix`](../modules/services/sairo.nix) | Podman compose systemd unit, firewall, sops `.env` |
 | [`modules/roles/storage.nix`](../modules/roles/storage.nix) | Enables storage role; includes `minio-client` (`mc`) |
 | [`secrets/minio.yaml`](../secrets/minio.yaml) | Encrypted root credentials |
+| [`docs/sairo-minio.md`](sairo-minio.md) | Sairo access, service account, troubleshooting |
 
 For interactive bucket management, `mc` (MinIO Client) is also available on the host — see `mc alias set` in the MinIO documentation.

@@ -1,0 +1,36 @@
+services:
+  sairo:
+    image: stephenjr002/sairo@sha256:252cc53d29d005c7a26aa8ee6e5195fcb31d9fdf5d31169a01423b7557ee1ae4
+    container_name: sairo
+    restart: unless-stopped
+    expose:
+      - "8000"
+    env_file:
+      - /run/secrets/sairo-env
+    environment:
+      S3_ENDPOINT: http://host.containers.internal:9000
+      S3_REGION: us-east-1
+      S3_PATH_STYLE: "true"
+      SECURE_COOKIE: "false"
+      DB_DIR: /data
+    volumes:
+      - /var/lib/sairo/data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Rewrites CSP so image/PDF previews can load presigned MinIO URLs (different port than Sairo UI).
+  sairo-proxy:
+    image: docker.io/library/nginx:1.27-alpine
+    container_name: sairo-proxy
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - /run/secrets/sairo-env
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+    depends_on:
+      - sairo
