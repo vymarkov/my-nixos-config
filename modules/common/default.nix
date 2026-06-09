@@ -45,6 +45,7 @@
     age  # age-keygen + age encrypt/decrypt; used to manage sops-nix age keys
     sops  # sops encrypt/decrypt; used to manage sops-nix secrets
     openssl  # openssl encrypt/decrypt; used to manage sops-nix secrets
+    code-cursor
   ];
 
   nixpkgs.config.allowUnfree = true;
