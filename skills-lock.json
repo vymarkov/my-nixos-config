@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "commit": {
+      "source": "ghalex/skills",
+      "sourceType": "github",
+      "skillPath": "commit/SKILL.md",
+      "computedHash": "8f006b38d44e09176c4f5ea5589efefa06a253a08ad171871f15b361dae7ab64"
+    }
+  }
+}
