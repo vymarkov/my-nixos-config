@@ -10,6 +10,12 @@
     setAsDefaultBrowser = true;
   };
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = null;
+    portalPackage = null;
+  };
+
   home.stateVersion = "25.05";
   home.username = "mark";
   home.homeDirectory = "/home/mark";

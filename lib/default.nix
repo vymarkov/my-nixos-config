@@ -14,6 +14,7 @@
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.mark = import ../home/mark;
         }
+        inputs.hyprflake.nixosModules.default
         ../hosts/${hostname}/default.nix
       ];
     };

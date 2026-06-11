@@ -3,6 +3,7 @@
 {
   imports = [
     ../../modules/common
+    ../../modules/roles/hyprflake.nix
     ../../modules/roles/desktop.nix
     ../../modules/roles/media.nix
     ../../modules/roles/storage.nix
