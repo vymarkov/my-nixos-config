@@ -9,6 +9,17 @@
     enable = true;
     setAsDefaultBrowser = true;
 
+    policies = let
+      mkExtensionSettings = builtins.mapAttrs (_: slug: {
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${slug}/latest.xpi";
+        installation_mode = "force_installed";
+      });
+    in {
+      ExtensionSettings = mkExtensionSettings {
+        "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
+      };
+    };
+
     profiles.default = {
       isDefault = true;
       settings = {
