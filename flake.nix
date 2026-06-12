@@ -19,6 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    code-cursor-nix.url = "github:jacopone/code-cursor-nix/v3.5.38";
   };
 
   outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
