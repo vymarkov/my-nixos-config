@@ -22,6 +22,21 @@
 
     profiles.default = {
       isDefault = true;
+
+      spacesForce = true;
+      spaces = {
+        Home = {
+          id = "2fea1ccf-6544-4902-8e8f-7d286ff2cc8b";
+          position = 1000;
+          icon = "🏠";
+        };
+        Work = {
+          id = "588fc98b-ed0a-4b74-9d1f-4187edab39aa";
+          position = 2000;
+          icon = "💼";
+        };
+      };
+
       settings = {
         # Smooth scrolling (keep enabled)
         "general.smoothScroll" = true;
