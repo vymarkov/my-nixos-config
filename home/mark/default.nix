@@ -1,5 +1,8 @@
 { config, pkgs, lib, inputs, ... }:
 
+let
+  system = pkgs.stdenv.hostPlatform.system;
+in
 {
   imports = [
     inputs.zen-browser.homeModules.twilight
@@ -69,10 +72,31 @@
   home.username = "mark";
   home.homeDirectory = "/home/mark";
 
-  home.packages = with pkgs; [
-    neovim
-    git
-    gh
-    nixd
+  home.sessionVariables.MASON_DISABLE_INSTALL = "1";
+
+  # Neovim uses guifont = "monospace:h17"; map the generic "monospace" family
+  # to a patched font so icon glyphs render in terminal and GUI Neovim.
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [ "AdwaitaMono Nerd Font" ];
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      monospace-font-name = "AdwaitaMono Nerd Font 11";
+    };
+  };
+
+  home.file.".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
+
+  home.packages = [
+    inputs.nvim.packages.${system}.nvim-deps
+    pkgs.nerd-fonts.adwaita-mono
+    pkgs.git
+    pkgs.gh
+    pkgs.nixd
   ];
 }

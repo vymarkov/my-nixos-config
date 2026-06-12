@@ -21,6 +21,11 @@
     };
 
     code-cursor-nix.url = "github:jacopone/code-cursor-nix/v3.5.38";
+
+    nvim = {
+      url = "github:vymarkov/nvim/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
