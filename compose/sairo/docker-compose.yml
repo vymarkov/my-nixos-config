@@ -15,11 +15,6 @@ services:
       DB_DIR: /data
     volumes:
       - /var/lib/sairo/data:/data
-    healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
 
   # Rewrites CSP so image/PDF previews can load presigned MinIO URLs (different port than Sairo UI).
   sairo-proxy:
