@@ -33,6 +33,10 @@
 
   programs.firefox.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    google-chrome
+  ];
+
   programs._1password.enable = true;
 
   programs._1password-gui = {
@@ -40,12 +44,14 @@
     polkitPolicyOwners = [ "mark" ];
   };
 
-  # Zen Browser is not in 1Password's default trusted list.
-  # Binary name from zen-browser-flake wrapFirefox; verify with: ps aux | grep -i zen
+  # Zen and Chrome are not in 1Password's default trusted list.
+  # Zen binary from zen-browser-flake wrapFirefox; verify with: ps aux | grep -i zen
   environment.etc."1password/custom_allowed_browsers" = {
     text = ''
       .zen-wrapped
       zen-bin
+      google-chrome
+      google-chrome-stable
     '';
     mode = "0755";
   };
