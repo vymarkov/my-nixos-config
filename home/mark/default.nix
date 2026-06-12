@@ -57,6 +57,14 @@
     };
   };
 
+  programs.vscode = {
+    enable = true;
+    package = inputs.code-cursor-nix.packages.${pkgs.stdenv.hostPlatform.system}.cursor;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+    ];
+  };
+ 
   home.stateVersion = "25.05";
   home.username = "mark";
   home.homeDirectory = "/home/mark";
@@ -65,5 +73,6 @@
     neovim
     git
     gh
+    nixd
   ];
 }

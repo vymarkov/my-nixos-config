@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Required for Remote-SSH and dynamically linked binaries on NixOS.
@@ -45,7 +45,8 @@
     age  # age-keygen + age encrypt/decrypt; used to manage sops-nix age keys
     sops  # sops encrypt/decrypt; used to manage sops-nix secrets
     openssl  # openssl encrypt/decrypt; used to manage sops-nix secrets
-    inputs.code-cursor-nix.packages.${pkgs.stdenv.hostPlatform.system}.cursor
+    git
+    gh
   ];
 
   nixpkgs.config.allowUnfree = true;
