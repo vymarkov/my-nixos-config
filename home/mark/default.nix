@@ -6,6 +6,7 @@ in
 {
   imports = [
     inputs.zen-browser.homeModules.twilight
+    ./gnome-tiling.nix
   ];
 
   programs.zen-browser = {

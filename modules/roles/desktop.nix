@@ -4,6 +4,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  # Tree tiling is handled by the Forge GNOME Shell extension (home-manager).
 
   services.xserver.xkb = {
     layout = "us";
