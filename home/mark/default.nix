@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   system = pkgs.stdenv.hostPlatform.system;
@@ -72,8 +72,6 @@ in
   home.username = "mark";
   home.homeDirectory = "/home/mark";
 
-  home.sessionVariables.MASON_DISABLE_INSTALL = "1";
-
   # Neovim uses guifont = "monospace:h17"; map the generic "monospace" family
   # to a patched font so icon glyphs render in terminal and GUI Neovim.
   fonts.fontconfig = {
@@ -89,12 +87,18 @@ in
     };
   };
 
+  home.sessionVariables.MASON_DISABLE_INSTALL = "1";
+
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
 
   home.packages = [
     inputs.nvim.packages.${system}.nvim-deps
     pkgs.nerd-fonts.adwaita-mono
+    pkgs.go
+    pkgs.nodejs_24
+    pkgs.vtsls
+    pkgs.nodePackages.svelte-language-server
     pkgs.git
     pkgs.gh
     pkgs.nixd
