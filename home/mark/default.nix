@@ -63,9 +63,20 @@ in
   programs.vscode = {
     enable = true;
     package = inputs.code-cursor-nix.packages.${pkgs.stdenv.hostPlatform.system}.cursor;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-    ];
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        pkief.material-icon-theme
+      ];
+      userSettings = {
+        "window.commandCenter" = true;
+        "window.autoDetectColorScheme" = false;
+        "workbench.colorTheme" = "Default Light Modern";
+        "workbench.iconTheme" = "material-icon-theme";
+        "editor.fontFamily" = "JetBrainsMono Nerd Font";
+        "editor.fontLigatures" = true;
+      };
+    };
   };
  
   home.stateVersion = "25.05";
