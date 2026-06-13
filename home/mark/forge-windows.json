@@ -1,0 +1,18 @@
+{
+  "overrides": [
+    { "wmClass": "gnome-system-monitor", "mode": "float" },
+    { "wmClass": "1Password", "mode": "float" },
+    { "wmClass": "_1password", "mode": "float" },
+    { "wmClass": "sdm", "mode": "float" },
+    { "wmClass": "leapp", "mode": "float" },
+    { "wmClass": "rancher-desktop", "mode": "float" },
+    { "wmClass": "ChatGPT", "mode": "float" },
+    { "wmClass": "org.remmina.Remmina", "mode": "float" },
+    { "wmClass": "org.gnome.Nautilus", "mode": "float" },
+    { "wmClass": "org.gnome.Cheese", "mode": "float" },
+    { "wmClass": "org.gnome.Shell.Extensions", "wmTitle": "Forge Settings", "mode": "float" },
+    { "wmClass": "org.gnome.Calculator", "mode": "float" },
+    { "wmClass": "firefox", "wmTitle": "About Mozilla Firefox", "mode": "float" },
+    { "wmClass": "org.mozilla.firefox", "wmTitle": "About Mozilla Firefox", "mode": "float" }
+  ]
+}
