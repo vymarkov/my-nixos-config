@@ -6,6 +6,7 @@ in
 {
   imports = [
     inputs.zen-browser.homeModules.twilight
+    ./hyprland.nix
   ];
 
   programs.zen-browser = {

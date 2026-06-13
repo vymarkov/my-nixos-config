@@ -5,6 +5,15 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+
+  # GDM cannot find uwsm unless it is on the display-manager service PATH.
+  systemd.services.display-manager.path = [ pkgs.uwsm ];
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";
