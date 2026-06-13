@@ -10,6 +10,26 @@
     variant = "";
   };
 
+  # Apple Magic Keyboard: remap Command <-> Control at evdev level (works in
+  # GNOME Wayland, X11, and TTY). XKB/gsettings alone did not apply the swap.
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings.main = {
+        leftmeta = "leftcontrol";
+        rightmeta = "rightcontrol";
+        leftcontrol = "leftmeta";
+        rightcontrol = "rightmeta";
+      };
+    };
+  };
+
+  # Function keys as F1-F12 by default when hid_apple binds to the keyboard.
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2
+  '';
+
   # hyprflake left catppuccin cursor in dconf; GNOME only ships Adwaita by default.
   programs.dconf.profiles.user.databases = [
     {
